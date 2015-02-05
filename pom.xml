@@ -8,8 +8,9 @@
 	<name>test_project</name>
 	<url>http://maven.apache.org</url>
 	<scm>
-		<url>http://github.com/madhuscholastic/test_project</url>
-		<connection>scm:git:git://github.com/madhuscholastic/test_project</connection>
+		<connection>scm:git:git://github.com/madhuscholastic/test_project.git</connection>
+		<developerConnection>scm:git:https://github.com/madhuscholastic/test_project.git</developerConnection>
+		<url>scm:git:https://github.com/madhuscholastic/test_project</url>
 	</scm>
 	<properties>
 		<build.number>SNAPSHOT</build.number>
@@ -25,16 +26,19 @@
 		<finalName>test</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<configuration>
-
 					<archive>
+
 						<!-- Note, manifest not written to exploded directory. http://jira.codehaus.org/browse/MWAR-167 -->
 						<manifestEntries>
 							<Specification-Title>${project.name}</Specification-Title>
 							<Specification-Version>${project.version}</Specification-Version>
 							<Implementation-Version>${build.number}</Implementation-Version>
-						
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -42,6 +46,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
 				<configuration>
 					<additionalProjectnatures>
 						<projectnature>com.sysdeo.eclipse.tomcat.tomcatnature</projectnature>
@@ -51,6 +56,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
 				<configuration>
 					<encoding>ISO-8859-1</encoding>
 				</configuration>
@@ -58,7 +64,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.1</version>
+				<version>1.2</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -67,21 +73,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-						<manifestEntries>
-							<git-SHA-1>${buildNumber}</git-SHA-1>
-						</manifestEntries>
-					</archive>
-				</configuration>
+				
 			</plugin>
 		</plugins>
 		<resources>
