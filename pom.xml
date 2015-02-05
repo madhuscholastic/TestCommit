@@ -7,8 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>test_project</name>
 	<url>http://maven.apache.org</url>
-	<scm>
-		<connection>scm:git:git://github.com/madhuscholastic/test_project.git</connection>
+	<scm>		<connection>scm:git:git://github.com/madhuscholastic/test_project.git</connection>
 		<developerConnection>scm:git:https://github.com/madhuscholastic/test_project.git</developerConnection>
 		<url>scm:git:https://github.com/madhuscholastic/test_project</url>
 	</scm>
